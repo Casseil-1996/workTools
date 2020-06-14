@@ -1,0 +1,192 @@
+.loop(@i) when (@i > 0) {
+  .loop((@i - 1)); // 递归调用自身
+
+  @n: @i*5;
+  @m: @i*25;
+
+  .w@{n} {
+    width: (1px * @n);
+  }
+
+  .h@{n} {
+    height: (1px * @n);
+  }
+
+  .w@{m} {
+    width: (1px * @m);
+  }
+
+  .h@{m} {
+    height: (1px * @m);
+  }
+
+  // margin 
+  .m@{n} {
+    margin: (1px * @n);
+  }
+
+  .mt@{n} {
+    margin-top: (1px * @n);
+  }
+
+  .mb@{n} {
+    margin-bottom: (1px * @n);
+  }
+
+  .ml@{n} {
+    margin-left: (1px * @n);
+  }
+
+  .mr@{n} {
+    margin-right: (1px * @n);
+  }
+
+  // margin-vh
+  .m@{n}vh {
+    margin: (1vh * @n);
+  }
+
+  .mt@{n}vh {
+    margin-top: (1vh * @n);
+  }
+
+  .mb@{n}vh {
+    margin-bottom: (1vh * @n);
+  }
+
+  .ml@{n}vh {
+    margin-left: (1vh * @n);
+  }
+
+  .mr@{n}vh {
+    margin-right: (1vh * @n);
+  }
+
+  // margin-vw
+  .m@{n}vw {
+    margin: (1vw * @n);
+  }
+
+  .mt@{n}vw {
+    margin-top: (1vw * @n);
+  }
+
+  .mb@{n}vw {
+    margin-bottom: (1vw * @n);
+  }
+
+  .ml@{n}vw {
+    margin-left: (1vw * @n);
+  }
+
+  .mr@{n}vw {
+    margin-right: (1vw * @n);
+  }
+
+  // margin-vm
+  .m@{n}vm {
+    margin: (1vmin * @n);
+  }
+
+  .mt@{n}vm {
+    margin-top: (1vmin * @n);
+  }
+
+  .mb@{n}vm {
+    margin-bottom: (1vmin * @n);
+  }
+
+  .ml@{n}vm {
+    margin-left: (1vmin * @n);
+  }
+
+  .mr@{n}vm {
+    margin-right: (1vmin * @n);
+  }
+
+  // padding 
+  .p@{n} {
+    padding: (1px * @n);
+  }
+
+  .pt@{n} {
+    padding-top: (1px * @n);
+  }
+
+  .pb@{n} {
+    padding-bottom: (1px * @n);
+  }
+
+  .pl@{n} {
+    padding-left: (1px * @n);
+  }
+
+  .pr@{n} {
+    padding-right: (1px * @n);
+  }
+
+  // padding-vh
+  .p@{n}vh {
+    padding: (1vh * @n);
+  }
+
+  .pt@{n}vh {
+    padding-top: (1vh * @n);
+  }
+
+  .pb@{n}vh {
+    padding-bottom: (1vh * @n);
+  }
+
+  .pl@{n}vh {
+    padding-left: (1vh * @n);
+  }
+
+  .pr@{n}vh {
+    padding-right: (1vh * @n);
+  }
+
+  // padding-vw
+  .p@{n}vw {
+    padding: (1vw * @n);
+  }
+
+  .pt@{n}vw {
+    padding-top: (1vw * @n);
+  }
+
+  .pb@{n}vw {
+    padding-bottom: (1vw * @n);
+  }
+
+  .pl@{n}vw {
+    padding-left: (1vw * @n);
+  }
+
+  .pr@{n}vw {
+    padding-right: (1vw * @n);
+  }
+
+  // padding-vm
+  .p@{n}vm {
+    padding: (1vmin * @n);
+  }
+
+  .pt@{n}vm {
+    padding-top: (1vmin * @n);
+  }
+
+  .pb@{n}vm {
+    padding-bottom: (1vmin * @n);
+  }
+
+  .pl@{n}vm {
+    padding-left: (1vmin * @n);
+  }
+
+  .pr@{n}vm {
+    padding-right: (1vmin * @n);
+  }
+}
+
+.loop(10);
