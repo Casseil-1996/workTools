@@ -22,11 +22,21 @@
         </div>
       </div>
     </div>
+    <sky-modal>
+      <div slot="title"></div>
+    </sky-modal>
+    <time-picker></time-picker>
   </div>
 </template>
 <script>
+import SkyModal from './sky-modal'
+import TimePicker from './time-picker'
 export default {
   name: 'stopwatch',
+  components: {
+    SkyModal,
+    TimePicker
+  },
   data () {
     return {
       stopWatchList: []
