@@ -1,15 +1,23 @@
 <template>
-  <div id="app">
+  <div id="app" :style="`background-image: url(${bg})`">
     <router-view />
   </div>
 </template>
 
 <script>
+import bg from '../public/img/star-bg.svg'
 export default {
   name: "app",
+  data () {
+    return { bg }
+  },
   components: {}
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+#app {
+  background-size: contain;
+  background-position: center;
+}
 </style>
