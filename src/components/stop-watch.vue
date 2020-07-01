@@ -1,23 +1,41 @@
 <template>
   <div class="stopwatch border">
-    <div class="skykit_btn" @click="addTimer">
+    <div
+      @click="addTimer"
+      class="skykit_btn"
+    >
       <i class="el-icon-plus"></i>
     </div>
-    <div v-for="item in stopWatchList" :key="item.ts">
-      <div class="flex-between" v-if="item.isExpired">
+    <div
+      :key="item.ts"
+      v-for="item in stopWatchList"
+    >
+      <div
+        class="flex-between"
+        v-if="item.isExpired"
+      >
         <span>已过期</span>
-        <div class="skykit_btn" @click="del(item.ts)">
+        <div
+          @click="del(item.ts)"
+          class="skykit_btn"
+        >
           <i class="el-icon-close"></i>
         </div>
       </div>
-      <div class="flex-between" v-else>
+      <div
+        class="flex-between"
+        v-else
+      >
         <div>
           <span v-if="item.d">{{item.d}}天</span>
           <span v-if="item.h">{{item.h}}小时</span>
           <span v-if="item.m">{{item.m}}分钟</span>
           <span v-if="item.s">{{item.s}}秒</span>
         </div>
-        <div class="skykit_btn" @click="del(item.ts)">
+        <div
+          @click="del(item.ts)"
+          class="skykit_btn"
+        >
           <i class="el-icon-close"></i>
         </div>
       </div>
@@ -47,7 +65,7 @@ export default {
   },
   methods: {
     init () {
-      this.stopWatchData = this.ls('stopWatchList')
+      this.stopWatchData = this.ls.stopWatchList
       if (this.timeID) return this.getParsedTime()
       this.timeID = setInterval(this.getParsedTime, 1000)
     },
@@ -55,8 +73,8 @@ export default {
       this.commit()
     },
     commit (ts = new Date().valueOf()) {
-      this.ls.push('stopWatchList', ts)
-        .then(this.init)
+      this.ls.stopWatchList.push(ts)
+      this.init()
     },
     getParsedTime () {
       if (!Array.isArray(this.stopWatchData)) return
@@ -64,11 +82,11 @@ export default {
         .map(item => this.$utils.getCountdownDetail(item))
     },
     del (ts) {
-      const res = this.ls('stopWatchList')
+      const res = this.ls.stopWatchList
       const idx = res.indexOf(ts)
       res.splice(idx, 1)
-      this.ls.set('stopWatchList', res)
-        .then(this.init)
+      this.ls.$set('stopWatchList', res)
+      this.init()
     }
   }
 }

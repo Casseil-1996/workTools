@@ -9,7 +9,6 @@ import bg from '../public/img/star-bg.svg'
 export default {
   name: "app",
   data () {
-    console.log(bg)
     return { bg }
   },
   components: {}

@@ -9,6 +9,14 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  }, {
+    path: '*',
+    name: '404',
+    component: () => import('../views/404')
+  }, {
+    path: '/dev',
+    name: 'dev',
+    component: () => import('../views/Dev')
   }
 ]
 
