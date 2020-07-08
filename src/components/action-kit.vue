@@ -2,59 +2,64 @@
   <div>
     <div class="actionKit">
       <div class="skykit_btn">
-        <i class="el-icon-tickets"></i>
+        <i class="el-icon-tickets" @click="openBoard('todo')"></i>
+      </div>
+      <!-- <div class="skykit_btn">
+        <i class="el-icon-refresh" @click="openBoard('')"></i>
+      </div>-->
+      <div class="skykit_btn">
+        <i class="el-icon-data-line" @click="openBoard('countDown')"></i>
       </div>
       <div class="skykit_btn">
-        <i class="el-icon-refresh"></i>
-      </div>
-      <div class="skykit_btn">
-        <i class="el-icon-data-line"></i>
-      </div>
-      <div class="skykit_btn">
-        <i class="el-icon-time" @click="handleClickClock"></i>
+        <i class="el-icon-time" @click="openBoard('countDown')"></i>
       </div>
       <div class="skykit_btn" @click="$toggleFullScreen()">
         <i class="el-icon-full-screen" v-if="!status.isFullScreen"></i>
         <i class="el-icon-close" v-else></i>
       </div>
     </div>
-    <stop-watch />
+    <board :visibility.sync="status.board">
+      <stop-watch />
+    </board>
   </div>
 </template>
 <script>
-import StopWatch from './stop-watch'
+import StopWatch from "./stop-watch";
+import board from "./board";
 export default {
   components: {
-    StopWatch
+    StopWatch,
+    board
   },
   mounted() {
     this.eventID = this.watchScreenStatus(
       () => {
-        this.status.isFullScreen = true
+        this.status.isFullScreen = true;
       },
       () => {
-        this.status.isFullScreen = false
+        this.status.isFullScreen = false;
       }
-    )
+    );
   },
   data() {
     return {
       status: {
         isFullScreen: false,
-        stopwatch: false
+        stopwatch: false,
+        board: true
       }
-    }
+    };
   },
   methods: {
-    handleClickClock() {
-      let status = this.status.stopwatch
-      this.status.stopwatch = !status
+    openBoard(type) {
+      console.log(type);
+      this.status.board = true;
     }
   },
   beforeDestroy() {
-    this.stopWatchScreenStatus(this.eventID)
+    this.stopWatchScreenStatus(this.eventID);
   }
-}
+};
 </script>
 <style lang="less" scoped>
 .actionKit {

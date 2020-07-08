@@ -1,23 +1,6 @@
-import Vue from 'vue'
-import { uuid, isType } from '../utils'
-const { isError } = isType
-let ls = {}
-setTimeout(() => {
-  let { prototype: { ls: newLS } } = Vue
-  ls = newLS
-}, 0)
-
-const handlerRes = (data) => {
-  return new Promise((resolve, reject) => {
-    if (isError(data)) reject({ code: 400, error: data })
-    resolve({ data, code: 0 })
-  })
-}
-
-export default class Request {
-  static addTodo(task) {
+export default class TODO {
+  static addTodo (task) {
     const { todo = [] } = ls
-    console.log(todo)
     const todoItem = {
       task,
       ts: new Date().valueOf(),
@@ -29,7 +12,7 @@ export default class Request {
     return handlerRes(todoItem)
   }
 
-  static delTodo(todoID) {
+  static delTodo (todoID) {
     const { todo = [] } = ls
     const idx = todo.findIndex(item => item.id == todoID)
     if (idx != null) todo.slice(idx, 1)
@@ -37,18 +20,18 @@ export default class Request {
     return new handlerRes(true)
   }
 
-  static getTodo(todoID) {
+  static getTodo (todoID) {
     const { todo = [] } = ls
     return todo.find(item => item.id == todoID)
   }
 
-  static queryTodo(params) {
+  static queryTodo (params) {
     console.log(params)
     const { todo = [] } = ls
     return new handlerRes(todo)
   }
 
-  static updateTodo(todoID, todoItem) {
+  static updateTodo (todoID, todoItem) {
     const { todo = [] } = ls
     todo.some(item => {
       if (item.id == todoID) {
@@ -61,5 +44,3 @@ export default class Request {
     return new handlerRes(ls.todo)
   }
 }
-
-console.log(Request)
