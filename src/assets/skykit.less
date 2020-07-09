@@ -1,9 +1,9 @@
-@import './loop.less';
+@import "./loop.less";
 
 html,
 body,
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: auto;
@@ -27,7 +27,7 @@ body,
   }
 
   * {
-    color: #EEEEEE;
+    color: #eeeeee;
   }
 
   input {
@@ -44,10 +44,10 @@ body,
   .border {
     box-shadow: 0 2px 12px 0 rgba(255, 255, 255, 0.3) !important;
   }
-
 }
 
-.pure-text {
+.pure-text,
+.plain {
   user-select: none;
 }
 
@@ -58,6 +58,64 @@ body,
 
 .border {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+@borderColor: #dcdee5;
+
+@media (prefers-color-scheme: dark) {
+  @borderColor: rgba(255, 255, 255, 0.3);
+
+  .border_t {
+    border-top: 1px solid @borderColor  !important;
+  }
+
+  .border_b {
+    border-bottom: 1px solid @borderColor  !important;
+  }
+
+  .border_l {
+    border-left: 1px solid @borderColor  !important;
+  }
+
+  .border_r {
+    border-right: 1px solid @borderColor  !important;
+  }
+
+  .border_x {
+    .border_l;
+    .border_r;
+  }
+
+  .border_y {
+    .border_t;
+    .border_b;
+  }
+}
+
+.border_t {
+  border-top: 1px solid @borderColor;
+}
+
+.border_b {
+  border-bottom: 1px solid @borderColor;
+}
+
+.border_l {
+  border-left: 1px solid @borderColor;
+}
+
+.border_r {
+  border-right: 1px solid @borderColor;
+}
+
+.border_x {
+  .border_l;
+  .border_r;
+}
+
+.border_y {
+  .border_t;
+  .border_b;
 }
 
 .fc {
@@ -72,16 +130,45 @@ body,
   display: flex;
 }
 
+.flex {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
 .skykit_btn {
-  .fc;
-  .point;
-  .w40;
-  .h40;
+  background-color: unset;
   transition: all 0.3s;
-  margin: 10px;
+  border: none;
+  .point;
+  .fc;
+
+  &_default {
+    padding: 12px;
+    margin: 12px;
+  }
+
+  &_middle {
+    padding: 8px;
+    margin: 8px;
+  }
+
+  &_small {
+    padding: 4px;
+    margin: 4px;
+  }
 
   &>i {
     font-size: 18px;
+    color: #eeeeee;
+  }
+
+  &:focus {
+    outline: none
   }
 
   &:hover {

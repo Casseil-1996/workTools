@@ -4,16 +4,21 @@
     id="board"
     v-show="visibility"
   >
-    <div class="board_title">
-      <div
+    <div class="board_title plain border_b">
+      <sky-btn
         @click="$emit('update:visibility',false)"
-        class="skykit_btn board_title_close"
+        icon="el-icon-close"
+        class="board_title_close"
       >
-        <i class="el-icon-close"></i>
-      </div>
+      </sky-btn>
       <slot name="title" />
     </div>
-    <slot />
+    <div class="board_body">
+      <slot />
+    </div>
+    <div class="board_foot">
+      <slot name="foot" />
+    </div>
   </div>
 </template>
 
@@ -33,18 +38,20 @@ export default {
     background-color: #242424;
   }
   transform: translate(-50%, -50%);
-  padding: 60px 10px 30px 20px;
   background-color: #fff;
+  flex-direction: column;
   position: absolute;
   height: 600px;
+  display: flex;
   width: 300px;
   z-index: 1;
   left: 50%;
   top: 50%;
 
   &_title {
+    padding-bottom: 4px;
     text-align: center;
-    position: absolute;
+    position: relative;
     line-height: 60px;
     width: 100%;
     left: 0;
@@ -55,6 +62,12 @@ export default {
       right: 0;
       top: 0;
     }
+  }
+
+  &_body {
+    padding: 12px 24px 24px;
+    overflow: auto;
+    flex: 1;
   }
 }
 </style>

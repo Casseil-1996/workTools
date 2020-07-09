@@ -9,39 +9,35 @@
         v-if="item.isExpired"
       >
         <span>已过期</span>
-        <div
+        <sky-btn
           @click="del(item.ts)"
-          class="skykit_btn"
+          icon="el-icon-close"
         >
-          <i class="el-icon-close"></i>
-        </div>
+        </sky-btn>
       </div>
       <div
         class="flex-between"
         v-else
       >
-        @todo
         <div>
           <span v-if="item.d">{{item.d}}天</span>
           <span v-if="item.h">{{item.h}}小时</span>
           <span v-if="item.m">{{item.m}}'' </span>
           <span v-if="item.s">{{item.s}}'</span>
         </div>
-        <div
+        <sky-btn
           @click="del(item.ts)"
-          class="skykit_btn"
+          icon="el-icon-close"
         >
-          <i class="el-icon-close"></i>
-        </div>
+        </sky-btn>
       </div>
     </div>
     <time-picker v-model="min" />
-    <div
+    <sky-btn
       @click="addTimer"
-      class="skykit_btn"
+      icon="el-icon-plus"
     >
-      <i class="el-icon-plus"></i>
-    </div>
+    </sky-btn>
     <sky-modal>
       <div slot="title"></div>
     </sky-modal>

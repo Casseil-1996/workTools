@@ -1,4 +1,4 @@
-const baseURL_v1 = 'http://localhost:3000/v1'
+const baseURL_v1 = 'http://localhost:3000/'
 module.exports = {
   devServer: {
     port: 8000,

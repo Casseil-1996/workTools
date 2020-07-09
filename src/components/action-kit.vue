@@ -1,31 +1,28 @@
 <template>
   <div>
     <div class="actionKit">
-      <div class="skykit_btn">
+      <sky-btn>
         <i
           @click="openBoard('todo')"
           class="el-icon-tickets"
         ></i>
-      </div>
-      <!-- <div class="skykit_btn"  @click="openBoard('')">
+      </sky-btn>
+      <!-- <sky-btn  @click="openBoard('')">
         <i class="el-icon-refresh"></i>
-      </div>-->
-      <div class="skykit_btn">
+      </sky-btn>-->
+      <sky-btn>
         <i
           @click="openBoard('countDown')"
           class="el-icon-data-line"
         ></i>
-      </div>
-      <div class="skykit_btn">
+      </sky-btn>
+      <sky-btn>
         <i
           @click="openBoard('countDown')"
           class="el-icon-time"
         ></i>
-      </div>
-      <div
-        @click="$toggleFullScreen()"
-        class="skykit_btn"
-      >
+      </sky-btn>
+      <sky-btn @click="$toggleFullScreen()">
         <i
           class="el-icon-full-screen"
           v-if="!status.isFullScreen"
@@ -34,20 +31,23 @@
           class="el-icon-close"
           v-else
         ></i>
-      </div>
+      </sky-btn>
     </div>
     <board :visibility.sync="status.board">
       <template #title>{{ titleMap[status.boardType] }}</template>
       <count-down v-if="status.boardType==='countDown'" />
+      <todo v-if="status.boardType==='todo'" />
     </board>
   </div>
 </template>
 <script>
 import countDown from "./countDown"
+import todo from "./todo"
 import board from "./board"
 export default {
   components: {
     countDown,
+    todo,
     board
   },
   mounted () {
@@ -68,8 +68,9 @@ export default {
         board: false,
         boardType: null
       },
-      titleMap:{
-        countDown:'计时器'
+      titleMap: {
+        countDown: '计时器',
+        todo: '待办事项'
       }
     }
   },
