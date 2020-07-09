@@ -1,7 +1,5 @@
-import ls from './ls'
-import { uuid } from './uuid'
-console.log(uuid)
-export { ls, uuid }
+import { default as ls } from './ls'
+export { ls }
 
 export const getTimeDetail = (date = new Date(), isRecursive = false) => {
   if (!isType.isDate(date)) {

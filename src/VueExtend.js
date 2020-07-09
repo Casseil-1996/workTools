@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import $utils, { ls } from './utils'
-import $request from './request'
+import * as $request from './request'
 
 Vue.prototype.$utils = $utils
 Vue.prototype.ls = new ls()
