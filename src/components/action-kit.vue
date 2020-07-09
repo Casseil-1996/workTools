@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="actionKit">
-      <div class="skykit_btn">
-        <i class="el-icon-tickets" @click="openBoard('todo')"></i>
+      <div class="skykit_btn" @click="openBoard('todo')">
+        <i class="el-icon-tickets"></i>
       </div>
-      <!-- <div class="skykit_btn">
-        <i class="el-icon-refresh" @click="openBoard('')"></i>
+      <!-- <div class="skykit_btn"  @click="openBoard('')">
+        <i class="el-icon-refresh"></i>
       </div>-->
-      <div class="skykit_btn">
-        <i class="el-icon-data-line" @click="openBoard('countDown')"></i>
+      <div class="skykit_btn" @click="openBoard('data')">
+        <i class="el-icon-data-line"></i>
       </div>
-      <div class="skykit_btn">
-        <i class="el-icon-time" @click="openBoard('countDown')"></i>
+      <div class="skykit_btn" @click="openBoard('countDown')">
+        <i class="el-icon-time"></i>
       </div>
       <div class="skykit_btn" @click="$toggleFullScreen()">
         <i class="el-icon-full-screen" v-if="!status.isFullScreen"></i>
