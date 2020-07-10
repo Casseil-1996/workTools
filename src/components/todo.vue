@@ -7,8 +7,8 @@
       ></el-input>
       <sky-btn
         @click="add()"
-        size='middle'
-        icon='el-icon-plus'
+        icon="el-icon-plus"
+        size="middle"
       />
     </div>
     <template v-for="item in todoList">
@@ -18,9 +18,9 @@
       >
         <span>{{item.task}}</span>
         <sky-btn
-          size='small'
-          @click="switchAction"
           :icon="item.isActive?'el-icon-video-play':'el-icon-video-play'"
+          @click="switchAction"
+          size="small"
         />
       </div>
     </template>
@@ -41,6 +41,7 @@ export default {
   },
   methods: {
     init () {
+      this.todo = ''
       this.getTodoList()
     },
     getTodoList () {
