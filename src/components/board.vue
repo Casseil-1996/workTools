@@ -7,10 +7,9 @@
     <div class="board_title plain border_b">
       <sky-btn
         @click="$emit('update:visibility',false)"
-        icon="el-icon-close"
         class="board_title_close"
-      >
-      </sky-btn>
+        icon="el-icon-close"
+      ></sky-btn>
       <slot name="title" />
     </div>
     <div class="board_body">
