@@ -7,7 +7,10 @@ export default {
     return axios.get(`/todo/${id}`)
   },
   del (id) {
-    return axios.del(`/todo/${id}`)
+    return axios.delete(`/todo/${id}`)
+  },
+  switchAction (id) {
+    return axios.put(`/todo/switchAction/${id}`)
   },
   create (task) {
     return axios.post('/todo', {
