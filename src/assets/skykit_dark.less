@@ -1,0 +1,60 @@
+@media (prefers-color-scheme: dark) {
+  @borderColor: rgba(255, 255, 255, 0.3);
+
+  html,
+  body,
+  #app {
+    background-color: #242424;
+  }
+
+  * {
+    color: #eeeeee;
+  }
+
+  input {
+    color: #333;
+  }
+
+  button,
+  .el-card {
+    * {
+      color: #606266;
+    }
+  }
+
+  .border {
+    box-shadow: 0 2px 12px 0 @borderColor !important;
+  }
+
+  .border_t {
+    border-top: 1px solid @borderColor !important;
+  }
+
+  .border_b {
+    border-bottom: 1px solid @borderColor !important;
+  }
+
+  .border_l {
+    border-left: 1px solid @borderColor !important;
+  }
+
+  .border_r {
+    border-right: 1px solid @borderColor !important;
+  }
+
+  .border_x {
+    .border_l;
+    .border_r;
+  }
+
+  .border_y {
+    .border_t;
+    .border_b;
+  }
+
+  .skykit_btn {
+    & > i {
+      color: #eee;
+    }
+  }
+}
