@@ -1,3 +1,6 @@
+import { default as ls } from './ls'
+export { ls }
+
 export const getTimeDetail = (date = new Date(), isRecursive = false) => {
   if (!isType.isDate(date)) {
     if (isRecursive) throw `Invalid Date: ${date}`
@@ -43,22 +46,24 @@ export const getCountdownDetail = (deadline) => {
   return { d: day, h: hour, m: minute, s: second, isExpired: false, ts: deadline }
 }
 
-export const checkType = function (type, data) {
-  return Object.prototype.toString.call(data) === `[object ${type}]`
-}
+export const checkType = (type, data) => Object.prototype.toString.call(data) === `[object ${type}]`
+
 
 const curry = (fn, ...args) => ((...innerArgs) => (fn.apply(this, [...args, ...innerArgs])))
 
-const TypeArr = ['Object', 'Date']
+const TypeArr = ['Object', 'Date', 'Error']
 const isType = {}
 TypeArr.forEach(type => {
   isType[`is${type}`] = curry(checkType, type)
 })
 
+
 export { isType }
+
 export default {
   getTimeDetail,
   getCountdownDetail,
   checkType,
+  ls,
   ...isType
 }

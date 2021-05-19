@@ -1,15 +1,18 @@
 <template>
   <div id="TimePicker">
-    <div class="sky_scroll" @scroll="handleScroll" ref="sky_scroll_inner">
+    <div
+      @scroll="handleScroll"
+      class="sky_scroll"
+      ref="sky_scroll_inner"
+    >
       <div class="sky_scroll_inner">
-        <div></div>
         <div
-          v-for="item in 60"
-          :class="current == item - 1 ? 'active' : null"
-          ref="sky_scroll_item"
+          :class="{point: true, active: currentIdx == item - 2 }"
           :key="item"
-        >{{ item - 1 }}</div>
-        <div></div>
+          @click="$emit('change',item-2)"
+          ref="sky_scroll_item"
+          v-for="(item) in 62"
+        >{{ (item == 1 || item == 62) ? '' : item - 2 }}</div>
       </div>
     </div>
   </div>
@@ -17,16 +20,24 @@
 
 <script>
 export default {
+  model: { prop: 'currentIdx', event: 'change' },
   name: 'TimePicker',
   props: {
     show: {
+      type: Boolean,
       default: false,
-      type: Boolean
+    },
+    currentIdx: {
+      type: Number,
+      default: 0,
     }
   },
-  data () {
-    return {
-      current: 0
+  watch: {
+    currentIdx (newVal) {
+      this.$refs.sky_scroll_item[newVal]
+        .scrollIntoView({
+          behavior: "smooth"
+        })
     }
   },
   methods: {
@@ -36,9 +47,9 @@ export default {
       const currentIdx = Math.round(scrollTop / itemHeight)
       clearTimeout(this.timeID)
       this.timeID = setTimeout(() => {
+        this.$emit('change', currentIdx)
         if (currentIdx === 0) return clearTimeout(this.timeID)
-        this.current = currentIdx
-        this.$refs.sky_scroll_item[currentIdx - 1]
+        this.$refs.sky_scroll_item[currentIdx]
           .scrollIntoView({
             behavior: "smooth"
           })

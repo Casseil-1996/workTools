@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import './plugins/element.js'
+import './plugins/skykit.js'
 import './assets/skykit.less'
 import './VueExtend'
 Vue.config.productionTip = false
