@@ -6,6 +6,8 @@ import store from './store'
 import './plugins/element.js'
 import './plugins/skykit.js'
 import './assets/skykit.less'
+import 'remixicon/fonts/remixicon.css'
+
 import './VueExtend'
 Vue.config.productionTip = false
 

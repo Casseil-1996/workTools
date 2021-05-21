@@ -10,6 +10,7 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fff;
+  font-size: 14px;
   overflow: auto;
   height: 100%;
   width: 100%;
@@ -85,8 +86,8 @@ body,
 }
 
 .skykit_btn {
-  background-color: unset;
-  transition: all 0.3s;
+  transition: background-color 0.4s, font-size 0.3s, transform 0.3s;
+  background-color: #fff;
   border: none;
   .point;
   .fc;
@@ -116,7 +117,7 @@ body,
 
   &:hover {
     background-color: #35363a;
-    transform: scale(1.2);
+    transform: translateZ(0) scale(1.2);
 
     & > i {
       color: #fff;

@@ -20,7 +20,7 @@
     height: (1px * @m);
   }
 
-  // margin 
+  // margin
   .m@{n} {
     margin: (1px * @n);
   }
@@ -104,7 +104,7 @@
     margin-right: (1vmin * @n);
   }
 
-  // padding 
+  // padding
   .p@{n} {
     padding: (1px * @n);
   }
@@ -189,4 +189,53 @@
   }
 }
 
+.loopPaddingAndMargin(@i) when (@i > 0) {
+  .loopPaddingAndMargin((@i - 1)); // 递归调用自身
+  @gap: @i*4px;
+  @n: @i*4;
+
+  // margin
+  .m@{n} {
+    margin: @gap;
+  }
+
+  .mt@{n} {
+    margin-top: @gap;
+  }
+
+  .mb@{n} {
+    margin-bottom: @gap;
+  }
+
+  .ml@{n} {
+    margin-left: @gap;
+  }
+
+  .mr@{n} {
+    margin-right: @gap;
+  }
+
+  // padding
+  .p@{n} {
+    padding: @gap;
+  }
+
+  .pt@{n} {
+    padding-top: @gap;
+  }
+
+  .pb@{n} {
+    padding-bottom: @gap;
+  }
+
+  .pl@{n} {
+    padding-left: @gap;
+  }
+
+  .pr@{n} {
+    padding-right: @gap;
+  }
+}
+
 .loop(10);
+.loopPaddingAndMargin(6);

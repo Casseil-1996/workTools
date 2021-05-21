@@ -1,7 +1,7 @@
 import { axios } from './axios'
 export default {
-  getList () {
-    return axios.get('/todo')
+  getList (params = {}) {
+    return axios.get('/todo', { params })
   },
   get (id) {
     return axios.get(`/todo/${id}`)

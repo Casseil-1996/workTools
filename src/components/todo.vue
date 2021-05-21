@@ -1,23 +1,24 @@
 <template>
   <div id="todo">
-    <div class="flex">
+    <div class="flex todo-list-item">
       <el-input
-        class="flex1"
+        class="flex1 mr4"
+        size="small"
         v-model="todo"
       ></el-input>
       <sky-btn
         @click="add()"
         icon="el-icon-plus"
-        size="middle"
+        size="small"
       />
     </div>
     <template v-for="item in todoList">
       <div
         :key="item._id"
-        class="flex-between"
+        class="flex-between todo-list-item"
       >
-        <span>{{item.task}}</span>
-        <span>
+        <span class="flex1">{{item.task}}</span>
+        <div class="flex">
           <sky-btn
             :icon="(item.status & 1 << 2) ? 'el-icon-video-pause' : 'el-icon-video-play'"
             @click="switchAction(item._id)"
@@ -28,7 +29,7 @@
             icon="el-icon-delete"
             size="small"
           />
-        </span>
+        </div>
       </div>
     </template>
   </div>
@@ -72,7 +73,7 @@ export default {
       })
     },
     getTodoIndex (_id) {
-      return this.todoList.findIndex(item => { item._id === _id })
+      return this.todoList.findIndex(item => item._id === _id)
     },
     switchAction (id) {
       this.$todo.switchAction(id).then(res => {
@@ -88,6 +89,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-#todo {
+.todo-list-item {
+  height: 44px;
 }
 </style>

@@ -5,11 +5,13 @@
     v-show="visibility"
   >
     <div class="board_title plain border_b">
-      <sky-btn
-        @click="$emit('update:visibility',false)"
-        class="board_title_close"
-        icon="el-icon-close"
-      ></sky-btn>
+      <div class="board_title_close">
+        <sky-btn
+          @click="$emit('update:visibility',false)"
+          icon="el-icon-close"
+          size="middle"
+        ></sky-btn>
+      </div>
       <slot name="title" />
     </div>
     <div class="board_body">
@@ -48,23 +50,26 @@ export default {
   top: 50%;
 
   &_title {
-    padding-bottom: 4px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    line-height: 60px;
+    display: flex;
+    color: #242424;
+    height: 60px;
     width: 100%;
     left: 0;
     top: 0;
 
     &_close {
+      transform: translate(0, -50%);
       position: absolute;
       right: 0;
-      top: 0;
+      top: 50%;
     }
   }
 
   &_body {
-    padding: 12px 24px 24px;
+    padding: 12px;
     overflow: auto;
     flex: 1;
   }
