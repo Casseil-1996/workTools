@@ -4,8 +4,8 @@ module.exports = {
     port: 8000,
     proxy: {
       '/v1': {
-        target: baseURL_v1
+        target: baseURL_v1,
       },
-    }
+    },
   },
 }

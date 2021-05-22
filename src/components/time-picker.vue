@@ -30,15 +30,15 @@ export default {
     currentIdx: {
       type: Number,
       default: 0,
-    }
+    },
   },
   watch: {
     currentIdx (newVal) {
       this.$refs.sky_scroll_item[newVal]
         .scrollIntoView({
-          behavior: "smooth"
+          behavior: 'smooth',
         })
-    }
+    },
   },
   methods: {
     handleScroll () {
@@ -51,12 +51,12 @@ export default {
         if (currentIdx === 0) return clearTimeout(this.timeID)
         this.$refs.sky_scroll_item[currentIdx]
           .scrollIntoView({
-            behavior: "smooth"
+            behavior: 'smooth',
           })
         clearTimeout(this.timeID)
       }, 100)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -78,10 +78,17 @@ export default {
         justify-content: center;
         align-items: center;
         height: @itemHeight;
-        display: flex;
         color: #9aa0a6;
+        display: flex;
         &.active {
-          color: #eee;
+          color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          color: #9aa0a6;
+          &.active {
+            color: #eee;
+          }
         }
       }
     }

@@ -1,13 +1,25 @@
-export default class PROXY_LOCALSTORAGE {
-  constructor(Prefix = 'PROXY_LOCALSTORAGE_') {
+export default class PROXY_LOCAL_STORAGE {
+  constructor (Prefix = 'PROXY_LOCAL_STORAGE_') {
     this.Prefix = Prefix
     this.Observe = []
     init(this)
   }
 
   $set (key, val) {
+    if (typeof key === 'object')
+      return Object.keys(key).forEach(k => { this.$set(k, key[k]) })
+
     localStorage[this.Prefix + key] = JSON.stringify(val)
     if (!this.Observe.includes(key)) createReflectLS(this, key)
+  }
+
+  $del (...keyArr) {
+    keyArr.forEach(key => {
+      localStorage.removeItem(key)
+      const idx = this.Observe.indexOf(key)
+      if (idx !== -1) this.Observe.splice(idx, 1)
+      delete this[key]
+    })
   }
 
   get (key) {
@@ -33,7 +45,7 @@ function createReflectLS (ls, key) {
     set (val) {
       localStorage[ls.Prefix + key] = JSON.stringify(val)
     },
+    configurable: true,
   })
 }
 
-window.ls = new PROXY_LOCALSTORAGE()

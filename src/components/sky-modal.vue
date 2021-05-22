@@ -19,15 +19,15 @@ export default {
   props: {
     title: {
       defult: false,
-      type: String
-    }
+      type: String,
+    },
   },
 
 
   computed: {
     slotArr () {
       return Object.keys(this.$slots)
-    }
+    },
   },
   data () {
     return {
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
 
-  }
+  },
 }
 </script>
 

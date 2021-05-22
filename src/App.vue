@@ -1,5 +1,8 @@
 <template>
-  <div id="app" :style="`background-image: url(${bg})`">
+  <div
+    :style="`background-image: url(${bg})`"
+    id="app"
+  >
     <router-view />
   </div>
 </template>
@@ -7,11 +10,11 @@
 <script>
 import bg from '../public/img/star-bg.svg'
 export default {
-  name: "app",
+  name: 'app',
   data () {
     return { bg }
   },
-  components: {}
+  components: {},
 };
 </script>
 

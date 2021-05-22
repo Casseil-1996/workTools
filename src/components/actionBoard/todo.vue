@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       todo: '',
-      todoList: []
+      todoList: [],
     }
   },
   created () {
@@ -68,7 +68,7 @@ export default {
         if (res.code) return
         this.$delete(
           this.todoList,
-          this.getTodoIndex(res.data._id)
+          this.getTodoIndex(res.data._id),
         )
       })
     },
@@ -84,8 +84,8 @@ export default {
           this.$set(this.todoList, idx, data)
         }
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less" scoped>

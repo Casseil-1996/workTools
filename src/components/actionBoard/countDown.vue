@@ -44,24 +44,24 @@
   </div>
 </template>
 <script>
-import SkyModal from "./sky-modal"
-import TimePicker from "./time-picker"
+import SkyModal from '../sky-modal'
+import TimePicker from '../time-picker'
 export default {
-  name: "stopwatch",
+  name: 'stopwatch',
   components: {
     SkyModal,
-    TimePicker
+    TimePicker,
   },
   data () {
     return {
       stopWatchList: [],
-      min: 0
+      min: 0,
     }
   },
   computed: {
     ts () {
       return this.min * 1000 * 60
-    }
+    },
   },
   created () {
     this.init()
@@ -80,23 +80,23 @@ export default {
     commit () {
       const { stopWatchList = [] } = this.ls
       stopWatchList.push(this.ts + new Date().valueOf())
-      this.ls.$set("stopWatchList", stopWatchList)
+      this.ls.$set('stopWatchList', stopWatchList)
       this.init()
     },
     getParsedTime () {
       if (!Array.isArray(this.stopWatchData)) return
       this.stopWatchList = this.stopWatchData.map(item =>
-        this.$utils.getCountdownDetail(item)
+        this.$utils.getCountdownDetail(item),
       )
     },
     del (ts) {
       const res = this.ls.stopWatchList
       const idx = res.indexOf(ts)
       res.splice(idx, 1)
-      this.ls.$set("stopWatchList", res)
+      this.ls.$set('stopWatchList', res)
       this.init()
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

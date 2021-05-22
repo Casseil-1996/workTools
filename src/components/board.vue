@@ -12,7 +12,7 @@
           size="middle"
         ></sky-btn>
       </div>
-      <slot name="title" />
+      <slot name="title">{{title}}</slot>
     </div>
     <div class="board_body">
       <slot />
@@ -28,9 +28,14 @@ export default {
   props: {
     visibility: {
       default: false,
-      type: Boolean
-    }
-  }
+      type: Boolean,
+    },
+
+    title: {
+      default: '',
+      type: String,
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -50,11 +55,15 @@ export default {
   top: 50%;
 
   &_title {
+    @media (prefers-color-scheme: dark) {
+      color: #eee;
+    }
+
     justify-content: center;
     align-items: center;
     position: relative;
-    display: flex;
     color: #242424;
+    display: flex;
     height: 60px;
     width: 100%;
     left: 0;
@@ -69,8 +78,8 @@ export default {
   }
 
   &_body {
-    padding: 12px;
     overflow: auto;
+    padding: 12px;
     flex: 1;
   }
 }

@@ -14,16 +14,16 @@
 export default {
   props: {
     icon: { type: String, default: '' },
-    size: { type: String, default: 'default' }
+    size: { type: String, default: 'default' },
   },
   methods: {
     handleClick (...args) {
       if (this.disabled) return
       this.$emit('click', ...args)
-    }
+    },
   },
   install (Vue) {
     Vue.component('sky-btn', this)
-  }
+  },
 }
 </script>

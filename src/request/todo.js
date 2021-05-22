@@ -14,7 +14,7 @@ export default {
   },
   create (task) {
     return axios.post('/todo', {
-      task
+      task,
     })
-  }
+  },
 }

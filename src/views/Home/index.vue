@@ -22,9 +22,9 @@
 // @ is an alias to /src
 import actionKit from '@/components/action-kit'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    actionKit
+    actionKit,
   },
   created() {
     this.getDateAndTime()
@@ -32,8 +32,8 @@ export default {
   },
   data() {
     return {
-      date: "",
-      time: ""
+      date: '',
+      time: '',
     }
   },
   methods: {
@@ -43,11 +43,11 @@ export default {
     },
     getDateAndTime() {
       this.date = this.$utils.getTimeDetail()
-    }
+    },
   },
   beforeDestroy() {
     clearInterval(this.timeID)
-  }
+  },
 };
 </script>
 <style lang="less" scoped>

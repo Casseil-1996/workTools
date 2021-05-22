@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       todo: '',
-      todoList: []
+      todoList: [],
     }
   },
   created () {
@@ -52,8 +52,8 @@ export default {
         console.log(res)
         this.init()
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

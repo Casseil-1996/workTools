@@ -1,7 +1,55 @@
 @import './loop.less';
 @import './skykit_dark.less';
 
-@borderColor: #dcdee5;
+@media (prefers-color-scheme: light) {
+  @borderColor: #dcdee5;
+
+  html,
+  body,
+  #app {
+    background-color: #fff;
+    * {
+      color: #333;
+    }
+
+    .border {
+      box-shadow: 0 2px 12px 0 @borderColor !important;
+    }
+
+    .border_t {
+      border-top: 1px solid @borderColor !important;
+    }
+
+    .border_b {
+      border-bottom: 1px solid @borderColor !important;
+    }
+
+    .border_l {
+      border-left: 1px solid @borderColor !important;
+    }
+
+    .border_r {
+      border-right: 1px solid @borderColor !important;
+    }
+
+    .border_x {
+      .border_l;
+      .border_r;
+    }
+
+    .border_y {
+      .border_t;
+      .border_b;
+    }
+
+    .skykit_btn {
+      background-color: #fff;
+      & > i {
+        color: #fff;
+      }
+    }
+  }
+}
 
 html,
 body,
@@ -9,7 +57,6 @@ body,
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fff;
   font-size: 14px;
   overflow: auto;
   height: 100%;
@@ -18,7 +65,6 @@ body,
 
 * {
   box-sizing: border-box;
-  color: #333;
   padding: 0;
   margin: 0;
 }
@@ -33,36 +79,7 @@ body,
   cursor: pointer;
 }
 
-.border {
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
-}
-
-.border_t {
-  border-top: 1px solid @borderColor;
-}
-
-.border_b {
-  border-bottom: 1px solid @borderColor;
-}
-
-.border_l {
-  border-left: 1px solid @borderColor;
-}
-
-.border_r {
-  border-right: 1px solid @borderColor;
-}
-
-.border_x {
-  .border_l;
-  .border_r;
-}
-
-.border_y {
-  .border_t;
-  .border_b;
-}
-
+.flex-center,
 .fc {
   display: flex;
   justify-content: center;
@@ -87,40 +104,76 @@ body,
 
 .skykit_btn {
   transition: background-color 0.4s, font-size 0.3s, transform 0.3s;
-  background-color: #fff;
+  text-align: center;
   border: none;
+  outline: none;
   .point;
-  .fc;
 
   &_default {
     padding: 12px;
     margin: 12px;
+
+    // &:hover {
+    //   padding: 12px * 2;
+    // }
   }
 
   &_middle {
     padding: 8px;
     margin: 8px;
+
+    // &:hover {
+    //   padding: 8px * 2;
+    // }
   }
 
   &_small {
     padding: 4px;
     margin: 4px;
+
+    // &:hover {
+    //   padding: 4px * 2;
+    // }
   }
 
   & > i {
     font-size: 18px;
   }
 
-  &:focus {
-    outline: none;
-  }
-
   &:hover {
-    background-color: #35363a;
     transform: translateZ(0) scale(1.2);
+    background-color: #35363a;
 
     & > i {
       color: #fff;
     }
   }
+}
+
+.tac {
+  text-align: center;
+}
+
+.tar {
+  text-align: right;
+}
+
+.tal {
+  text-align: left;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.w100p {
+  width: 100%;
+}
+
+.h100p {
+  height: 100%;
+}
+
+.block {
+  display: block;
 }

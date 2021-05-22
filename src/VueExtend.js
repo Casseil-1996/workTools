@@ -1,29 +1,21 @@
 import Vue from 'vue'
-import $utils, { ls } from './utils'
+import $utils, { PROXY_LOCAL_STORAGE } from './utils'
 import * as $request from './request'
+import dayjs from 'dayjs'
 
 Vue.prototype.$utils = $utils
-Vue.prototype.ls = new ls()
+
+const ls = new PROXY_LOCAL_STORAGE()
+Vue.prototype.ls = window.ls = ls
+
 Vue.prototype.$request = $request
+if (ls.token) { $request.setToken(ls.token) }
 
 Vue.prototype.toFullScreen = (dom = window.document.querySelector('#app')) => {
-
-    if (dom.requestFullscreen) {
-
-        return dom.requestFullscreen()
-
-    } else if (dom.webkitRequestFullScreen) {
-
-        return dom.webkitRequestFullScreen()
-
-    } else if (dom.mozRequestFullScreen) {
-
-        return dom.mozRequestFullScreen()
-
-    } else {
-
-        return dom.msRequestFullscreen()
-
+    const keyArr = ['requestFullscreen', 'webkitRequestFullScreen', 'mozRequestFullScreen', 'msRequestFullscreen']
+    for (let i = 0; i < keyArr.length; i++) {
+        const key = keyArr[i]
+        if (dom[key]) return dom[key]()
     }
 }
 
@@ -52,7 +44,7 @@ Vue.prototype.watchScreenStatus = (fn1, fn2) => {
     eventWatcher[currentEventID] = ScreenWatcher(fn1, fn2)
     document.addEventListener(
         'fullscreenchange',
-        eventWatcher[currentEventID]
+        eventWatcher[currentEventID],
     )
     return currentEventID++
 }
@@ -60,33 +52,12 @@ Vue.prototype.watchScreenStatus = (fn1, fn2) => {
 Vue.prototype.stopWatchScreenStatus = (eventID) => {
     document.removeEventListener(
         'fullscreenchange',
-        eventWatcher[eventID]
+        eventWatcher[eventID],
     )
 }
 
-// Vue.prototype.ls = (key) => {
-//     if (!localStorage[key]) return
-//     return JSON.parse(localStorage[key])
-// }
-// Vue.prototype.ls.set = (key, val) => {
-//     return new Promise((resolve, reject) => {
-//         try {
-//             localStorage[key] = JSON.stringify(val)
-//             resolve(Vue.prototype.ls(key))
-//         } catch (error) {
-//             reject(error)
-//         }
-//     })
-// }
-// Vue.prototype.ls.push = (key, val) => {
-//     return new Promise((resolve, reject) => {
-//         try {
-//             const originArr = Vue.prototype.ls(key) || []
-//             originArr.push(val)
-//             localStorage[key] = JSON.stringify(originArr)
-//             resolve(Vue.prototype.ls(key))
-//         } catch (error) {
-//             reject(error)
-//         }
-//     })
-// }
+
+Vue.filter('day', (val, format = 'YYYY/MM/DD HH:mm:ss') => {
+    if (!val) return '/'
+    return dayjs(val).format(format)
+})

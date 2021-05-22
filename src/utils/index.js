@@ -1,5 +1,5 @@
-import { default as ls } from './ls'
-export { ls }
+import { default as PROXY_LOCAL_STORAGE } from './ls'
+export { PROXY_LOCAL_STORAGE }
 
 export const getTimeDetail = (date = new Date(), isRecursive = false) => {
   if (!isType.isDate(date)) {
@@ -18,7 +18,7 @@ export const getTimeDetail = (date = new Date(), isRecursive = false) => {
   const D = date.getDate()
   const DD = getFullNum(D, 2, 0)
   const YYYY = date.getFullYear()
-  return { H, HH, s, ss, ms, M, MM, m, mm, D, DD, YYYY, }
+  return { H, HH, s, ss, ms, M, MM, m, mm, D, DD, YYYY }
 }
 export const getFullNum = (num, padStart = 2, Accuracy = 2) => {
   const originNum = (Number(num) || 0)
@@ -64,6 +64,6 @@ export default {
   getTimeDetail,
   getCountdownDetail,
   checkType,
-  ls,
-  ...isType
+  PROXY_LOCAL_STORAGE,
+  ...isType,
 }
