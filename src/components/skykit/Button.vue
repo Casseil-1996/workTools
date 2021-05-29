@@ -1,13 +1,15 @@
 <template>
   <button
+    :class="['skykit-btn',`skykit-btn__${size}`, { border }]"
     @click="handleClick"
-    :class="['skykit_btn',`skykit_btn_${size}`]"
   >
     <i
       :class="icon"
       v-if="icon"
     ></i>
-    <slot />
+    <span>
+      <slot />
+    </span>
   </button>
 </template>
 <script>
@@ -15,6 +17,7 @@ export default {
   props: {
     icon: { type: String, default: '' },
     size: { type: String, default: 'default' },
+    border: { type: Boolean, default: true },
   },
   methods: {
     handleClick (...args) {

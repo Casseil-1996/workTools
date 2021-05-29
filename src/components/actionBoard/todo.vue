@@ -1,11 +1,11 @@
 <template>
   <div id="todo">
     <div class="flex todo-list-item">
-      <el-input
+      <input
+        @keypress.enter="add()"
         class="flex1 mr4"
-        size="small"
         v-model="todo"
-      ></el-input>
+      />
       <sky-btn
         @click="add()"
         icon="el-icon-plus"
@@ -55,7 +55,6 @@ export default {
     getTodoList () {
       this.$todo.getList()
         .then(res => {
-          console.log(res)
           this.todoList = res.data
         })
     },

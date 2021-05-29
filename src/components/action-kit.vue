@@ -56,8 +56,8 @@ export default {
         actionFn: () => { this.openBoard('countDown') },
         icon: 'ri-timer-line',
       }, {
-        actionFn: () => { this.openBoard('countDown') },
-        icon: 'ri-calendar-event-line',
+        actionFn: () => { this.$router.push('/dashboard') },
+        icon: 'ri-calendar-check-line',
       }, {
         actionFn: () => { this.$toggleFullScreen() },
         icon: `ri-fullscreen${this.status.isFullScreen && '-exit' || ''}-line`,

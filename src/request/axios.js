@@ -1,4 +1,6 @@
 import Axios from 'axios'
+
+import store from '../store'
 const axios = Axios.create({
   baseURL: '/v1',
 })
@@ -9,6 +11,10 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(response => {
+  if (response.data.code === 403) {
+    return store.commit('logout')
+  }
+
   return response.data
 }, (error) => {
   return Promise.reject(error)

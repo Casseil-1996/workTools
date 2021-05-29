@@ -11,10 +11,16 @@
 import bg from '../public/img/star-bg.svg'
 export default {
   name: 'app',
+
   data () {
     return { bg }
   },
+
   components: {},
+
+  created () {
+    this.$store.commit('init')
+  },
 };
 </script>
 

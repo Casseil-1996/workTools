@@ -36,7 +36,6 @@ export default {
     addTodo () {
       this.$request.addTodo(this.todo)
         .then(res => {
-          console.log(res)
           this.todo = ''
           this.todoList.push(res.data)
         })

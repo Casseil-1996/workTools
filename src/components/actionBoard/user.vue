@@ -1,28 +1,6 @@
 <template>
   <div id="user">
-    <template v-if="!isLogin">
-      <div class="m12">
-        <div class="mb8">用户名</div>
-        <el-input
-          size="small"
-          v-model="loginData.name"
-        ></el-input>
-      </div>
-      <div class="m12">
-        <div class="mb8">密码</div>
-        <el-input
-          size="small"
-          type="password"
-          v-model="loginData.password"
-        ></el-input>
-      </div>
-      <div class="m16 flex">
-        <sky-btn
-          @click="handleLogin"
-          class="flex1"
-        >登陆</sky-btn>
-      </div>
-    </template>
+    <loginVue v-if="!isLogin" />
     <template v-else>
       <div class="tac p24">
         <img
@@ -59,7 +37,7 @@
       </div>
       <div class="m16 flex">
         <sky-btn
-          @click="logoutOut"
+          @click="handleLogout"
           class="danger flex1"
         >退出登陆</sky-btn>
       </div>
@@ -67,15 +45,21 @@
   </div>
 </template>
 <script>
+import loginVue from '../util/login.vue'
+
+
 export default {
 
   name: 'User',
 
   data () {
     return {
-      loginData: {},
       rules: {},
     }
+  },
+
+  components: {
+    loginVue,
   },
   created () {
     this.init()
@@ -94,12 +78,8 @@ export default {
     init () {
     },
 
-    handleLogin () {
-      this.$store.commit('login', this.loginData)
-    },
-
-    logoutOut () {
-      this.$store.commit('loginOut')
+    handleLogout () {
+      this.$store.commit('logout')
     },
   },
 }

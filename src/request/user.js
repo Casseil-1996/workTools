@@ -1,5 +1,5 @@
 import { axios } from './axios'
-const appId = '60a8878fa267e818035fa26e'
+import { appId } from '../../config'
 
 export default {
   get (id) {

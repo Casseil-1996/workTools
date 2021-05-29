@@ -19,6 +19,8 @@ export default class PROXY_LOCAL_STORAGE {
       const idx = this.Observe.indexOf(key)
       if (idx !== -1) this.Observe.splice(idx, 1)
       delete this[key]
+      console.log(`${this.Prefix}${key}`)
+      delete localStorage[`${this.Prefix}${key}`]
     })
   }
 
