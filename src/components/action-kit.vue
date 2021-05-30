@@ -2,12 +2,12 @@
   <div>
     <div class="actionKit">
       <sky-btn
+        :class="{ ml50: idx === actionList.length - 1 }"
+        :icon="`ri-${item.icon}-line`"
         :key="idx"
         @click="item.actionFn"
         v-for="(item, idx) in actionList"
-      >
-        <i :class="item.icon"></i>
-      </sky-btn>
+      />
     </div>
     <board
       :title="title"
@@ -51,21 +51,23 @@ export default {
     actionList () {
       return [{
         actionFn: () => { this.openBoard('todo') },
-        icon: 'ri-task-line',
+        icon: 'task',
       }, {
         actionFn: () => { this.openBoard('countDown') },
-        icon: 'ri-timer-line',
+        icon: 'timer',
       }, {
         actionFn: () => { this.$router.push('/dashboard') },
-        icon: 'ri-calendar-check-line',
+        icon: 'calendar-check',
+      }, {
+        actionFn: () => { this.$router.push('/user') },
+        icon: 'contacts',
       }, {
         actionFn: () => { this.$toggleFullScreen() },
-        icon: `ri-fullscreen${this.status.isFullScreen && '-exit' || ''}-line`,
+        icon: this.status.isFullScreen ? 'fullscreen-exit' : 'fullscreen',
       }, {
         actionFn: () => { this.openBoard('user') },
-        icon: 'ri-shield-user-line',
-      },
-      ]
+        icon: this.isLogin ? 'user-3' : 'login-box',
+      }]
     },
 
     isLogin () {

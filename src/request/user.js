@@ -2,7 +2,10 @@ import { axios } from './axios'
 import { appId } from '../../config'
 
 export default {
-  get (id) {
+  get () {
+    return axios.get('/user')
+  },
+  getById (id) {
     return axios.get(`/user/${id}`)
   },
 

@@ -78,7 +78,9 @@ export default {
   }
 
   &_body {
+    flex-direction: column;
     overflow: auto;
+    display: flex;
     padding: 12px;
     flex: 1;
   }

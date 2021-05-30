@@ -2,7 +2,7 @@
   <div class="flex h100p">
     <sky-btn
       @click="handleAdd()"
-      class="adder"
+      class="main-btn"
       icon="ri-add-line"
     >添加新清单</sky-btn>
     <template v-for="board in dashboardList">
@@ -37,7 +37,7 @@
           <template v-for="dash in board.children">
             <div
               :key="dash._id"
-              class="dashboard-item shadow-wide__hover"
+              class="dashboard-item shadow-wide__hover bg-auto border"
             >
               <div class="flex-between">
                 <div>{{ dash.detail }}</div>
@@ -157,11 +157,7 @@ export default {
 </script>
 
 <style lang="less" scope>
-.adder {
-  position: absolute !important;
-  right: 15px;
-  top: 10px;
-}
+
 .dashboard {
   &-card {
     flex-direction: column;
@@ -183,8 +179,6 @@ export default {
   }
 
   &-item {
-    border: 1px solid #252525;
-    background-color: #252525;
     padding: 10px;
     min-height: 80px;
     margin: 8px 0;
